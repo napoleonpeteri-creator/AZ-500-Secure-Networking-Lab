@@ -442,4 +442,135 @@ Verify:
 - Virtual Network = *secure-network-vnet*
 - Associated Subnet = *BackendSubnet*
 
+- # 9. Deploy the Web Server Virtual Machine (VM-WEB)
+
+## Objective
+
+Deploy the frontend virtual machine that will host the web application. The virtual machine will reside in the FrontendSubnet, receive a public IP address for Internet access, and be associated with the App-SGs-Web Application Security Group.
+
+### Navigation
+
+Azure Portal
+
+→ Resource Groups
+
+→ rg-secure-networking
+
+→ Create
+
+→ Virtual Machine
+
+### Configuration
+
+| Setting | Value |
+|---------|-------|
+| Virtual Machine Name | VM-WEB |
+| Region | East US |
+| Image | Windows Server 2022 Datacenter: Azure Edition |
+| Size | Standard_B2s (or lab equivalent) |
+| Virtual Network | secure-network-vnet |
+| Subnet | FrontendSubnet |
+| Public IP | Enabled |
+| Application Security Group | App-SGs-Web |
+
+Click *Review + Create*.
+
+Click *Create*.
+
+### Screenshot
+
+![VM-WEB Created](images/AZURE_VM_Created.png)
+
+### Validation
+
+Verify:
+
+- VM-WEB deployment completed successfully.
+- The VM is connected to *FrontendSubnet*.
+- The VM is a member of *App-SGs-Web*.
+- A public IP address has been assigned.
+
+---
+
+# 10. Deploy the Database Virtual Machine (VM-DB)
+
+## Objective
+
+Deploy the backend database virtual machine. This VM will remain private and will only accept SQL traffic from VM-WEB through the configured Application Security Groups and Network Security Groups.
+
+### Navigation
+
+Azure Portal
+
+→ Resource Groups
+
+→ rg-secure-networking
+
+→ Create
+
+→ Virtual Machine
+
+### Configuration
+
+| Setting | Value |
+|---------|-------|
+| Virtual Machine Name | VM-DB |
+| Region | East US |
+| Image | Windows Server 2022 Datacenter: Azure Edition |
+| Size | Standard_B2s (or lab equivalent) |
+| Virtual Network | secure-network-vnet |
+| Subnet | BackendSubnet |
+| Public IP | Disabled |
+| Application Security Group | App-SGs-DB |
+
+Click *Review + Create*.
+
+Click *Create*.
+
+### Screenshot
+
+![VM-DB Created](images/AZURE-VM-DB-Created.png)
+
+### Validation
+
+Verify:
+
+- VM-DB deployment completed successfully.
+- The VM is connected to *BackendSubnet*.
+- The VM is a member of *App-SGs-DB*.
+- No public IP address is assigned.
+
+---
+
+# Security Validation
+
+After completing the deployment, validate the following:
+
+- VM-WEB is reachable through HTTP (TCP port 80).
+- VM-DB does not have a public IP address.
+- SQL traffic (TCP port 1433) is allowed only from *App-SGs-Web* to *App-SGs-DB*.
+- Internet traffic cannot directly access VM-DB.
+- Frontend and backend workloads are segmented using separate subnets.
+
+---
+
+# Enterprise Security Best Practices Demonstrated
+
+This implementation demonstrates several Azure security best practices:
+
+- Network segmentation using dedicated frontend and backend subnets.
+- Workload-based filtering with Application Security Groups.
+- Least privilege access through tightly scoped NSG rules.
+- Isolation of backend resources from direct Internet access.
+- Layered network security using Virtual Networks, NSGs, and ASGs.
+- Secure communication between application and database tiers.
+
+---
+
+# Conclusion
+
+This lab successfully implemented a secure two-tier Azure environment using Azure networking and security services. By combining Virtual Networks, Network Security Groups, Application Security Groups, and carefully configured security rules, the deployment protects backend resources while allowing controlled access to the web application.
+
+The design reflects enterprise cloud
+
 
