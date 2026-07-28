@@ -170,3 +170,128 @@ Verify:
 ### Screenshot
 
 ![Virtual Network Created](images/AZURE_Created_VNET.png)
+
+# 3. Create the Web Application Security Group
+
+## Objective
+
+Create an Application Security Group (ASG) to logically group all web-tier virtual machines. This enables Network Security Group (NSG) rules to reference application workloads instead of individual IP addresses.
+
+### Navigation
+
+Azure Portal
+
+→ Resource Groups
+
+→ rg-secure-networking
+
+→ Create
+
+→ Application Security Group
+
+### Configuration
+
+| Setting | Value |
+|---------|-------|
+| Name | App-SGs-Web |
+| Region | East US |
+
+Click *Review + Create*.
+
+Click *Create*.
+
+Wait until Azure reports that the deployment completed successfully.
+
+### Screenshot
+
+![Create Application Security Group](images/AZURE_Create_APPLICATION_SEC_GROUP.png)
+
+### Validation
+
+Verify:
+
+- Application Security Group = *App-SGs-Web*
+- Provisioning State = *Succeeded*
+
+---
+
+# 4. Create the Database Application Security Group
+
+## Objective
+
+Create an Application Security Group for the backend database tier.
+
+### Navigation
+
+Azure Portal
+
+→ Resource Groups
+
+→ rg-secure-networking
+
+→ Create
+
+→ Application Security Group
+
+### Configuration
+
+| Setting | Value |
+|---------|-------|
+| Name | App-SGs-DB |
+| Region | East US |
+
+Click *Review + Create*.
+
+Click *Create*.
+
+### Validation
+
+Verify:
+
+- Application Security Group = *App-SGs-DB*
+- Provisioning State = *Succeeded*
+
+---
+
+# 5. Create the Frontend Network Security Group
+
+## Objective
+
+Create a Network Security Group that will secure the FrontendSubnet.
+
+### Navigation
+
+Azure Portal
+
+→ Resource Groups
+
+→ rg-secure-networking
+
+→ Create
+
+→ Network Security Group
+
+### Configuration
+
+| Setting | Value |
+|---------|-------|
+| Name | nsg-frontend |
+| Region | East US |
+
+Click *Review + Create*.
+
+Click *Create*.
+
+### Screenshot
+
+![Create Frontend NSG](images/AZURE-Create_network_security_group.png)
+
+### Validation
+
+Verify:
+
+- Network Security Group = *nsg-frontend*
+- Provisioning State = *Succeeded*
+
+
+
