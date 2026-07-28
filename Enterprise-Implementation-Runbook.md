@@ -101,7 +101,7 @@ Click *Create*.
 
 Wait until Azure reports that the deployment completed successfully.
 
-### Screenshot
+
 
 ![Create Resource Group](images/AZURE-Create_resource_group.png)
 
@@ -151,7 +151,7 @@ Click *Review + Create*.
 
 Click *Create*.
 
-### Screenshot
+
 
 ![Create Virtual Network](images/AZURE_Create_VNET.png)
 
@@ -167,7 +167,7 @@ Verify:
 - FrontendSubnet exists.
 - BackendSubnet exists.
 
-### Screenshot
+
 
 ![Virtual Network Created](images/AZURE_Created_VNET.png)
 
@@ -202,7 +202,7 @@ Click *Create*.
 
 Wait until Azure reports that the deployment completed successfully.
 
-### Screenshot
+
 
 ![Create Application Security Group](images/AZURE_Create_APPLICATION_SEC_GROUP.png)
 
@@ -282,7 +282,7 @@ Click *Review + Create*.
 
 Click *Create*.
 
-### Screenshot
+
 
 ![Create Frontend NSG](images/AZURE-Create_network_security_group.png)
 
@@ -331,7 +331,7 @@ Azure Portal
 
 Click *Add*.
 
-### Screenshot
+
 
 ![HTTP Rule](images/AZURE_Inbound_rules_nsgFrontEnd_added.png)
 
@@ -386,7 +386,7 @@ Azure Portal
 
 Click *Add*.
 
-### Screenshot
+
 
 ![SQL Rule](images/AZURE_nsg_backend_DB_inbound_rules.png)
 
@@ -431,7 +431,7 @@ Azure Portal
 
 Click *Save*.
 
-### Screenshot
+
 
 ![Backend NSG Association](images/AZURE_network_security_backend_created.png)
 
@@ -477,7 +477,7 @@ Click *Review + Create*.
 
 Click *Create*.
 
-### Screenshot
+
 
 ![VM-WEB Created](images/AZURE_VM_Created.png)
 
@@ -527,7 +527,7 @@ Click *Review + Create*.
 
 Click *Create*.
 
-### Screenshot
+
 
 ![VM-DB Created](images/AZURE-VM-DB-Created.png)
 
