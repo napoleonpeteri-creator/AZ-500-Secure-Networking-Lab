@@ -293,5 +293,153 @@ Verify:
 - Network Security Group = *nsg-frontend*
 - Provisioning State = *Succeeded*
 
+# 6. Configure the HTTP Inbound Security Rule
+
+## Objective
+
+Allow Internet users to access the web application over HTTP (TCP port 80).
+
+This rule applies only to virtual machines that belong to the *App-SGs-Web* Application Security Group.
+
+### Navigation
+
+Azure Portal
+
+→ Resource Groups
+
+→ rg-secure-networking
+
+→ nsg-frontend
+
+→ Inbound security rules
+
+→ Add
+
+### Configuration
+
+| Setting | Value |
+|---------|-------|
+| Source | Any |
+| Destination | Application Security Group |
+| Destination ASG | App-SGs-Web |
+| Service | HTTP |
+| Protocol | TCP |
+| Port | 80 |
+| Action | Allow |
+| Priority | 100 |
+| Rule Name | Allow-HTTP-To-Web |
+
+Click *Add*.
+
+### Screenshot
+
+![HTTP Rule](images/AZURE_Inbound_rules_nsgFrontEnd_added.png)
+
+### Validation
+
+Verify:
+
+- Rule Name = *Allow-HTTP-To-Web*
+- Destination = *App-SGs-Web*
+- Protocol = *TCP*
+- Port = *80*
+- Priority = *100*
+
+---
+
+# 7. Configure the SQL Security Rule
+
+## Objective
+
+Allow Microsoft SQL Server traffic (TCP port 1433) from the web application to the database server.
+
+The database server must never accept SQL traffic directly from the Internet.
+
+### Navigation
+
+Azure Portal
+
+→ Resource Groups
+
+→ rg-secure-networking
+
+→ nsg-backend
+
+→ Inbound security rules
+
+→ Add
+
+### Configuration
+
+| Setting | Value |
+|---------|-------|
+| Source | Application Security Group |
+| Source ASG | App-SGs-Web |
+| Destination | Application Security Group |
+| Destination ASG | App-SGs-DB |
+| Service | MS SQL |
+| Protocol | TCP |
+| Destination Port | 1433 |
+| Action | Allow |
+| Priority | 100 |
+| Rule Name | Allow-SQL-From-Web |
+
+Click *Add*.
+
+### Screenshot
+
+![SQL Rule](images/AZURE_nsg_backend_DB_inbound_rules.png)
+
+### Validation
+
+Verify:
+
+- Source = *App-SGs-Web*
+- Destination = *App-SGs-DB*
+- Protocol = *TCP*
+- Port = *1433*
+- Action = *Allow*
+
+---
+
+# 8. Associate the Backend Network Security Group
+
+## Objective
+
+Associate *nsg-backend* with *BackendSubnet* so that every virtual machine deployed within the subnet automatically inherits the configured security policies.
+
+### Navigation
+
+Azure Portal
+
+→ Resource Groups
+
+→ rg-secure-networking
+
+→ nsg-backend
+
+→ Subnets
+
+→ Associate
+
+### Configuration
+
+| Setting | Value |
+|---------|-------|
+| Virtual Network | secure-network-vnet |
+| Subnet | BackendSubnet |
+
+Click *Save*.
+
+### Screenshot
+
+![Backend NSG Association](images/AZURE_network_security_backend_created.png)
+
+### Validation
+
+Verify:
+
+- Virtual Network = *secure-network-vnet*
+- Associated Subnet = *BackendSubnet*
 
 
